@@ -2,9 +2,13 @@
 
 Welcome to the setup a benchmark. :wave:
 
+This documnet describes the steps to setup and run a benchmark. It is target at a Linux system.
+
+If you want to run it on Windows, please consider the [Best Practices Windows](BestPracticesWindows.md).
+
 ## Requirements
 
-Make sure you have the following installed: gcloud, kubectl, kubens and helm!
+Make sure you have the following installed: docker, gcloud, kubectl, kubens and helm!
 
 ## How to setup a Benchmark namespace
 
