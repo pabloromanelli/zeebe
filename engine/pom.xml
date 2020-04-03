@@ -16,7 +16,6 @@
   </parent>
 
   <dependencies>
-
     <dependency>
       <groupId>io.zeebe</groupId>
       <artifactId>zeebe-util</artifactId>
