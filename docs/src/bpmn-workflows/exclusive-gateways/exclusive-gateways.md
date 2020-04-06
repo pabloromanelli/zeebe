@@ -14,7 +14,9 @@ An exclusive gateway can also be used to **join** multiple incoming flows to one
 
 ## Conditions
 
-A `conditionExpression` defines when a flow is taken. It is a [boolean expression](/reference/expressions.html#boolean-expressions) that can access the workflow instance variables and compare them with literals or other variables. Multiple comparisons can be combined as disjunction (`and`) or conjunction (`or`).
+A `conditionExpression` defines when a flow is taken. It is a [boolean expression](/reference/expressions.html#boolean-expressions) that can access the workflow instance variables and compare them with literals or other variables. The condition is fulfilled when expression returns `true`.
+
+Multiple boolean values or comparisons can be combined as disjunction (`and`) or conjunction (`or`).
 
 For example:
 
@@ -24,6 +26,8 @@ For example:
 = order.customer = "Paul"
 
 = orderCount > 15 or totalPrice > 50
+
+= valid and orderCount > 0
 ```
 
 ## Additional Resources
