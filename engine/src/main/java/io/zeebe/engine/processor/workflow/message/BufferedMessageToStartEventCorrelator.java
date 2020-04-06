@@ -85,9 +85,11 @@ public final class BufferedMessageToStartEventCorrelator implements WorkflowPost
     for (final ExecutableStartEvent startEvent : workflow.getWorkflow().getStartEvents()) {
       if (startEvent.isMessage()) {
 
-        final Optional<String> optMessageName = startEvent.getMessage().getMessageName();
-        final org.agrona.DirectBuffer messageNameBuffer = new UnsafeBuffer();
-        messageNameBuffer.wrap(optMessageName.get().getBytes());
+        final DirectBuffer messageNameBuffer = startEvent
+            .getMessage()
+            .getMessageName()
+            .map(BufferUtil::wrapString)
+            .orElseThrow();
 
         messageState.visitMessages(
             messageNameBuffer,

@@ -103,12 +103,12 @@ public final class DeploymentCreatedProcessor implements TypedRecordProcessor<De
     for (final ExecutableCatchEventElement startEvent : startEvents) {
       if (startEvent.isMessage()) {
         final ExecutableMessage message = startEvent.getMessage();
-        final Optional<String> optMessageName = message.getMessageName();
 
-        optMessageName.ifPresent(
-            messageName -> {
-              final org.agrona.DirectBuffer messageNameBuffer = new UnsafeBuffer();
-              messageNameBuffer.wrap(optMessageName.get().getBytes());
+        message
+            .getMessageName()
+            .map(BufferUtil::wrapString)
+            .ifPresent(
+                messageNameBuffer -> {
 
               subscriptionRecord.reset();
               subscriptionRecord
