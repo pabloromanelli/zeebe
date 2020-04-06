@@ -36,9 +36,7 @@ When the activity is entered then it creates a corresponding message subscriptio
 
 A message can be referenced by one or more message events. It **must** define the name of the message (e.g. `Money collected`) and the `correlationKey` expression (e.g. `= orderId`), except it is only referenced by message start events.
 
-The `correlationKey` is an [expression](/reference/expressions.html) that ...
-
- reference a variable of the workflow instance that holds the correlation key of the message. It is read from the workflow instance on activating the message event and must be either a `string` or a `number`.
+The `correlationKey` is an expression that usually [access a variable](/reference/expressions.html#access-variables) of the workflow instance that holds the correlation key of the message. The expression is evaluated on activating the message event and must result either in a `string` or in a `number`.
 
 In order to correlate a message to the message event, the message is published with the defined name (e.g. `Money collected`) and the **value** of the `correlationKey` expression. For example, if the workflow instance has a variable `orderId` with value `"order-123"` then the message must be published with the correlation key `"order-123"`.
 
@@ -65,7 +63,7 @@ An intermediate message catch event with message definition:
 ```xml
 <bpmn:message id="Message_1iz5qtq" name="money-collected">
   <bpmn:extensionElements>
-    <zeebe:subscription correlationKey="orderId" />
+    <zeebe:subscription correlationKey="= orderId" />
   </bpmn:extensionElements>
 </bpmn:message>
 

@@ -133,6 +133,11 @@ totalCount > 5
 // false is totalCount is null
 ```
 
+### String Expressions
+
+* string concat
+* values to string
+
 ### Date-Time Expressions
 
 * date and time
