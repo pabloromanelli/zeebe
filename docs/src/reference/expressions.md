@@ -9,7 +9,6 @@ The following attributes of BPMN elements **require** an expression:
 * Input/Output Variable Mappings: [source](/reference/variables.html#inputoutput-variable-mappings)
 
 Additionally, the following attributes of BPMN elements can define an expression **optionally** instead of a static value:
-* Message Catch Event / Receive Task: [message name](/bpmn-workflows/message-events/message-events.html#messages)
 * Timer Catch Event: [timer definition](/bpmn-workflows/timer-events/timer-events.html#timers)
 * Service Task: [job type](/bpmn-workflows/service-tasks/service-tasks.html#task-definition), [job retries](/bpmn-workflows/service-tasks/service-tasks.html#task-definition)
 * Call Activity: [process id](/bpmn-workflows/call-activities/call-activities.html#defining-the-called-workflow)
@@ -135,13 +134,81 @@ totalCount > 5
 
 ### String Expressions
 
+> TODO:
+
 * string concat
 * values to string
 
-### Date-Time Expressions
+### Temporal Expressions
 
-* date and time
-* duration
+An expression can contain the following temporal values:
+
+<table style="width:100%">
+  <tr>
+    <th>Temporal Type</th>
+    <th>Examples</th>
+    <th>Operators</th>
+  </tr>
+
+  <tr>
+    <td>date</td>
+    <td>date("2020-04-06")</td>
+    <td>
+      <li>date + duration
+      <li>date - date
+      <li>date - duration
+    </td>
+  </tr>
+
+  <tr>
+    <td>time</td>
+    <td>time("15:30:00"),<br> time("15:30:00+02:00")</td>
+    <td>
+      <li>time + duration
+      <li>time - time
+      <li>time - duration
+    </td>
+  </tr>
+
+  <tr>
+    <td>date-time</td>
+    <td>date and time("2020-04-06T15:30:00"),<br> date and time("2020-04-06T15:30:00+02:00")</td>
+    <td>
+      <li>date-time + duration
+      <li>date-time - date-time
+      <li>date-time - duration
+    </td>
+  </tr>
+
+  <tr>
+    <td>duration</td>
+    <td>duration("P12H"),<br> duration("P4Y")</td>
+    <td>
+      <li>duration + duration
+      <li>duration + date
+      <li>duration + time
+      <li>duration + date-time
+      <li>duration - duration
+      <li>date - duration
+      <li>time - duration
+      <li>date-time - duration
+      <li>duration * number
+      <li>duration / duration
+      <li>duration / number
+    </td>
+  </tr>
+
+  <tr>
+    <td>cycle</td>
+    <td>cycle(3, duration("PT1H")),<br> cycle(duration("P7D"))</td>
+    <td> </td>
+  </tr>
+
+</table>
+
+> TODO:
+
+* comparison
 * cycle
 
 ### List Expressions
